@@ -99,10 +99,13 @@
     .btn-info:hover { border-color:var(--gold); color:var(--gold); }
     .empty-state { grid-column:1/-1; text-align:center; padding:5rem 2rem; color:rgba(245,240,232,0.2); }
     .empty-state span { display:block; font-size:4rem; margin-bottom:1rem; }
+    /* Botones mob ocultos por defecto */
+    .mob-card-actions { display:none; }
 
     /* LOADING */
-    .loading-overlay { position:fixed; inset:0; background:var(--dark); z-index:999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; transition:opacity 0.5s; }
+    .loading-overlay { position:fixed; inset:0; background:var(--dark); z-index:1500; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; transition:opacity 0.5s; }
     .loading-overlay.hidden { opacity:0; pointer-events:none; }
+    .loading-overlay.gone { display:none; }
     .loading-logo { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:0.1em; color:var(--gold); }
     .loading-bar { width:200px; height:2px; background:rgba(201,168,76,0.2); border-radius:2px; overflow:hidden; }
     .loading-bar-inner { height:100%; background:var(--gold); animation:loadbar 1.5s ease-in-out infinite; }
@@ -342,7 +345,7 @@
        MÓVIL — cards de producto mejoradas
     ══════════════════════════════════ */
     /* Barra compra fija en modal detalle */
-    .detail-buy-bar { display:none; position:sticky; bottom:0; left:0; right:0; background:linear-gradient(to top,#080f0a 70%,transparent); padding:1rem 1.5rem 1.2rem; gap:0.7rem; z-index:10; }
+    .detail-buy-bar { display:none; position:sticky; bottom:0; left:0; right:0; background:#0d1a10; border-top:1px solid rgba(201,168,76,0.15); padding:0.9rem 1.2rem calc(0.9rem + env(safe-area-inset-bottom)); gap:0.7rem; z-index:10; flex-shrink:0; }
     .detail-buy-bar .buy-main { flex:1; background:var(--gold); color:var(--dark); border:none; border-radius:8px; padding:1rem; font-family:'Bebas Neue',sans-serif; font-size:1.2rem; letter-spacing:0.1em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.5rem; transition:all 0.2s; }
     .detail-buy-bar .buy-main:active { transform:scale(0.97); background:var(--gold-light); }
     .detail-buy-bar .buy-call { width:52px; height:52px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; color:var(--ivory); font-size:1.3rem; cursor:pointer; display:flex; align-items:center; justify-content:center; text-decoration:none; flex-shrink:0; transition:all 0.2s; }
@@ -398,15 +401,19 @@
       .card-price span.unit { font-size:0.6rem; }
 
       /* Ocultar botones desktop */
-      .btn-add, .btn-info { display:none; }
+      .btn-add, .btn-info { display:none !important; }
+      /* card-footer solo precio en móvil, acciones abajo */
+      .card-footer { flex-direction:column; gap:0.45rem; align-items:stretch; }
+      /* div inline de desktop que envuelve btn-info + btn-add */
+      .card-footer > div:not(.mob-card-actions) { display:none !important; }
 
-      /* Botón comprar móvil — grande y fácil */
-      .mob-card-actions { display:flex; gap:0.4rem; }
-      .mob-btn-buy { flex:1; background:var(--gold); color:var(--dark); border:none; border-radius:5px; padding:0.55rem 0.5rem; font-family:'Bebas Neue',sans-serif; font-size:0.95rem; letter-spacing:0.06em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.3rem; transition:all 0.15s; }
+      /* Mostrar botones móvil */
+      .mob-card-actions { display:flex !important; gap:0.4rem; }
+      .mob-btn-buy { display:flex !important; flex:1; background:var(--gold); color:var(--dark); border:none; border-radius:5px; padding:0.58rem 0.4rem; font-family:'Bebas Neue',sans-serif; font-size:0.88rem; letter-spacing:0.06em; cursor:pointer; align-items:center; justify-content:center; gap:0.25rem; transition:all 0.15s; white-space:nowrap; }
       .mob-btn-buy:active { transform:scale(0.96); background:var(--gold-light); }
-      .mob-btn-detail { width:34px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:5px; color:rgba(245,240,232,0.4); font-size:0.85rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all 0.15s; flex-shrink:0; }
+      .mob-btn-detail { display:flex !important; width:34px; flex-shrink:0; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:5px; color:rgba(245,240,232,0.4); font-size:0.85rem; cursor:pointer; align-items:center; justify-content:center; transition:all 0.15s; }
       .mob-btn-detail:active { border-color:var(--gold); color:var(--gold); }
-      .agotado .mob-btn-buy { background:rgba(100,100,100,0.3); color:rgba(255,255,255,0.3); cursor:not-allowed; }
+      .agotado .mob-btn-buy { background:rgba(80,80,80,0.35) !important; color:rgba(255,255,255,0.25) !important; cursor:not-allowed; }
 
       .filter-bar { flex-wrap:nowrap; overflow-x:auto; padding-bottom:0.3rem; -webkit-overflow-scrolling:touch; gap:0.4rem; margin-bottom:1.5rem; }
       .filter-bar::-webkit-scrollbar { display:none; }
@@ -419,15 +426,15 @@
       footer { padding:2rem 1.2rem 1.5rem; }
 
       /* Modal detalle desde abajo como sheet */
-      .detail-overlay { padding:0; align-items:flex-end; }
-      .detail-modal { border-radius:18px 18px 0 0; max-height:93vh; border-bottom:none; display:flex; flex-direction:column; }
+      .detail-overlay { padding:0; align-items:flex-end; background:rgba(0,0,0,0.85); }
+      .detail-modal { border-radius:18px 18px 0 0; max-height:93vh; border-bottom:none; display:flex; flex-direction:column; overflow:hidden; }
       .gallery-main { height:220px; flex-shrink:0; }
       .gallery-thumbs { flex-shrink:0; }
-      .detail-body { padding:1.2rem 1.2rem 0.5rem; flex:1; overflow-y:auto; }
+      .detail-body { padding:1.2rem 1.2rem 0.5rem; flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
       .detail-name { font-size:1.5rem; }
       .detail-price { font-size:1.8rem; }
       .detail-desc { font-size:0.82rem; margin-bottom:0.5rem; }
-      .detail-actions { display:none; } /* reemplazado por detail-buy-bar */
+      .detail-actions { display:none !important; }
       .detail-buy-bar { display:flex; }
 
       /* Admin modal desde abajo */
@@ -814,7 +821,7 @@
   function hideLoading(){
     const el=document.getElementById('loadingOverlay');
     el.classList.add('hidden');
-    setTimeout(()=>el.style.display='none',600);
+    setTimeout(()=>{ el.classList.add('gone'); },600);
   }
 
   function showFbStatus(msg, type){
