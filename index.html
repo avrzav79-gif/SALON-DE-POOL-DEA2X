@@ -778,23 +778,29 @@
   window._deleteDoc   = deleteDoc;
   window._doc         = doc;
 
-  // ── ESCUCHA EN TIEMPO REAL — PRODUCTOS ──
-  onSnapshot(query(productsCol, orderBy('createdAt', 'asc')), snap => {
-    window._products = snap.docs.map(d => ({ ...d.data(), _docId: d.id }));
-    renderProducts();
-    renderEditorGrid();
-    hideLoading();
-  }, err => {
-    console.error('Firestore error:', err);
-    showFbStatus('Error de conexión', 'err');
-    hideLoading();
-  });
+  // ── MOSTRAR SITIO INMEDIATAMENTE (sin esperar Firebase) ──
+  hideLoading();
+  renderProducts();
 
-  // ── ESCUCHA EN TIEMPO REAL — URLs PRIVADAS ──
-  onSnapshot(query(urlsCol, orderBy('createdAt','asc')), snap => {
-    window._privateUrls = snap.docs.map(d => ({ ...d.data(), _docId: d.id }));
-    renderUrlList();
-  });
+  // ── INTENTAR CONECTAR FIREBASE EN SEGUNDO PLANO ──
+  try {
+    onSnapshot(query(productsCol, orderBy('createdAt', 'asc')), snap => {
+      window._products = snap.docs.map(d => ({ ...d.data(), _docId: d.id }));
+      renderProducts();
+      renderEditorGrid();
+      showFbStatus('✓ Conectado', 'ok');
+    }, err => {
+      console.error('Firestore:', err);
+      showFbStatus('Sin base de datos', 'err');
+    });
+
+    onSnapshot(query(urlsCol, orderBy('createdAt','asc')), snap => {
+      window._privateUrls = snap.docs.map(d => ({ ...d.data(), _docId: d.id }));
+      renderUrlList();
+    }, ()=>{});
+  } catch(e) {
+    console.error('Firebase init error:', e);
+  }
 </script>
 
 <script>
@@ -820,8 +826,9 @@
 
   function hideLoading(){
     const el=document.getElementById('loadingOverlay');
+    if(!el || el.classList.contains('gone')) return;
     el.classList.add('hidden');
-    setTimeout(()=>{ el.classList.add('gone'); },600);
+    setTimeout(()=>{ el.classList.add('gone'); }, 400);
   }
 
   function showFbStatus(msg, type){
@@ -1212,16 +1219,17 @@
     if(mode==='auto') mode=window.innerWidth<=768?'mob':'pc';
     try{ localStorage.setItem('dea2x_mode',mode); }catch(e){}
     const ws=document.getElementById('welcomeScreen');
-    ws.classList.add('hide');
-    setTimeout(()=>ws.classList.add('gone'),520);
+    if(ws){ ws.classList.add('hide'); setTimeout(()=>ws.classList.add('gone'),520); }
   }
-  // Si ya eligió antes, saltar bienvenida directamente
+  // Al cargar: si ya eligió antes, saltar bienvenida
   (function(){
     let saved=null;
     try{ saved=localStorage.getItem('dea2x_mode'); }catch(e){}
-    if(saved){
+    // En móvil real (<480px) saltar la pantalla de bienvenida automáticamente
+    const isMobile = window.innerWidth <= 480 || /Android|iPhone|iPad/i.test(navigator.userAgent);
+    if(saved || isMobile){
       const ws=document.getElementById('welcomeScreen');
-      if(ws){ ws.classList.add('gone'); }
+      if(ws) ws.classList.add('gone');
     }
   })();
 
