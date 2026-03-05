@@ -264,9 +264,141 @@
     @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     .hero-eyebrow{animation:fadeUp 0.7s ease both} h1{animation:fadeUp 0.7s ease 0.15s both} .hero-desc{animation:fadeUp 0.7s ease 0.3s both} .hero-btns{animation:fadeUp 0.7s ease 0.45s both}
     .table-visual{animation:fadeUp 0.9s ease 0.3s both,float 6s ease-in-out 1.2s infinite}
+
+    /* ══════════════════════════════════
+       MÓVIL — diseño completamente distinto
+    ══════════════════════════════════ */
+
+    /* Barra de navegación móvil */
+    .mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:200; background:rgba(10,20,13,0.98); backdrop-filter:blur(20px); border-bottom:1px solid rgba(201,168,76,0.2); padding:0 1rem; height:60px; align-items:center; justify-content:space-between; }
+    .mob-nav-logo { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; letter-spacing:0.08em; color:var(--gold); }
+    .mob-nav-logo span { color:var(--ivory); }
+    .mob-hamburger { width:40px; height:40px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; cursor:pointer; border:none; background:transparent; padding:0; }
+    .mob-hamburger span { display:block; width:22px; height:2px; background:var(--ivory); border-radius:2px; transition:all 0.3s; }
+    .mob-hamburger.open span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+    .mob-hamburger.open span:nth-child(2) { opacity:0; }
+    .mob-hamburger.open span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+
+    /* Menú desplegable móvil */
+    .mob-menu { display:none; position:fixed; top:60px; left:0; right:0; z-index:199; background:#0a140d; border-bottom:1px solid rgba(201,168,76,0.15); padding:1.5rem; flex-direction:column; gap:0; }
+    .mob-menu.open { display:flex; }
+    .mob-menu a { text-decoration:none; font-size:0.9rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,240,232,0.7); padding:1rem 0; border-bottom:1px solid rgba(255,255,255,0.05); transition:color 0.3s; display:block; }
+    .mob-menu a:last-child { border-bottom:none; color:var(--gold); }
+    .mob-menu a:hover { color:var(--gold); }
+
+    /* Bottom nav bar — estilo app */
+    .mob-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:200; background:rgba(8,15,10,0.97); backdrop-filter:blur(20px); border-top:1px solid rgba(201,168,76,0.15); padding:0.5rem 0; padding-bottom:calc(0.5rem + env(safe-area-inset-bottom)); }
+    .mob-bottom-nav ul { display:flex; list-style:none; justify-content:space-around; }
+    .mob-bottom-nav li a { display:flex; flex-direction:column; align-items:center; gap:3px; text-decoration:none; color:rgba(245,240,232,0.35); font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.4rem 1rem; transition:all 0.3s; }
+    .mob-bottom-nav li a .nav-icon { font-size:1.3rem; line-height:1; }
+    .mob-bottom-nav li a.active, .mob-bottom-nav li a:hover { color:var(--gold); }
+
+    @media (max-width: 768px) {
+      /* Ocultar nav desktop, mostrar móvil */
+      nav { display:none; }
+      .mob-nav { display:flex; }
+      .mob-bottom-nav { display:block; }
+
+      /* Hero — una columna, compacto */
+      .hero { grid-template-columns:1fr; min-height:auto; padding-top:60px; }
+      .hero-left { padding:2.5rem 1.5rem 1.5rem; }
+      .hero-right { display:none; } /* ocultar mesa animada en móvil para rendimiento */
+      h1 { font-size:clamp(2.8rem,12vw,4rem); }
+      .hero-desc { font-size:0.88rem; margin:1.2rem 0 2rem; }
+      .hero-btns { gap:0.7rem; }
+      .btn-primary, .btn-outline { padding:0.85rem 1.6rem; font-size:0.72rem; }
+
+      /* Stats bar — scroll horizontal en móvil */
+      .stats-bar { padding:1rem; gap:0; overflow-x:auto; flex-wrap:nowrap; justify-content:flex-start; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+      .stats-bar::-webkit-scrollbar { display:none; }
+      .stat { flex-shrink:0; scroll-snap-align:start; padding:0.5rem 1.2rem; }
+      .stat-num { font-size:0.9rem !important; }
+      .stat-label { font-size:0.6rem; }
+      .stat-divider { width:1px; height:30px; flex-shrink:0; }
+
+      /* Secciones — padding reducido */
+      section { padding:3rem 1.2rem 3rem; }
+      /* Espacio extra abajo por la bottom nav */
+      #contacto { padding-bottom:5rem; }
+
+      /* Productos — 1 columna en móvil, 2 en tablet */
+      .products-header { flex-direction:column; align-items:flex-start; }
+      .products-grid { grid-template-columns:repeat(2,1fr); gap:0.9rem; }
+      .product-card.featured { grid-row:span 1; }
+      .product-card.featured .card-img { height:160px; }
+      .card-body { padding:0.9rem; }
+      .card-name { font-size:1.1rem; }
+      .card-desc { font-size:0.73rem; margin-bottom:0.8rem; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+      .card-price { font-size:1.25rem; }
+      .card-footer { flex-wrap:wrap; gap:0.4rem; }
+      .btn-info { font-size:0.6rem; padding:0.25rem 0.5rem; }
+      .btn-add { width:32px; height:32px; font-size:1.1rem; }
+
+      /* Filter bar — scroll horizontal */
+      .filter-bar { flex-wrap:nowrap; overflow-x:auto; padding-bottom:0.5rem; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+      .filter-bar::-webkit-scrollbar { display:none; }
+      .filter-btn { flex-shrink:0; scroll-snap-align:start; font-size:0.65rem; padding:0.45rem 0.9rem; }
+
+      /* Contacto — una columna */
+      .contact-grid { grid-template-columns:1fr; gap:2rem; }
+
+      /* Footer — una columna */
+      .footer-grid { grid-template-columns:1fr; gap:1.5rem; }
+      footer { padding:2.5rem 1.5rem 1.5rem; }
+
+      /* Detail modal — pantalla completa en móvil */
+      .detail-overlay { padding:0; align-items:flex-end; }
+      .detail-modal { border-radius:16px 16px 0 0; max-height:95vh; border-bottom:none; }
+      .gallery-main { height:260px; }
+      .detail-body { padding:1.5rem; }
+      .detail-name { font-size:1.7rem; }
+      .detail-price { font-size:1.9rem; }
+      .detail-desc { font-size:0.85rem; }
+      .detail-actions { flex-direction:column; }
+      .detail-actions .btn-primary, .detail-actions .btn-outline { text-align:center; justify-content:center; }
+
+      /* Admin modal — casi pantalla completa */
+      .modal { padding:1.5rem; border-radius:12px 12px 0 0; max-height:96vh; }
+      .modal-overlay { align-items:flex-end; padding:0; }
+      .admin-tab { font-size:0.62rem; padding:0.6rem 0.8rem; }
+      .product-editor-grid { grid-template-columns:1fr; }
+
+      /* Sección títulos más pequeños */
+      .section-title { font-size:2.2rem; }
+    }
+
+    /* Muy pequeño (iPhone SE etc) */
+    @media (max-width: 380px) {
+      .products-grid { grid-template-columns:1fr; }
+      .card-img { aspect-ratio:16/9; }
+    }
   </style>
 </head>
 <body>
+
+<!-- MÓVIL: top nav -->
+<div class="mob-nav">
+  <div class="mob-nav-logo">DEA2X<span> POOL</span></div>
+  <button class="mob-hamburger" id="mobHamburger" onclick="toggleMobMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+<!-- MÓVIL: menú desplegable -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#productos" onclick="closeMobMenu()">🎱 Productos</a>
+  <a href="#contacto" onclick="closeMobMenu()">📍 Contacto</a>
+  <a href="https://wa.me/56932312157?text=Hola,%20me%20interesa%20un%20producto" target="_blank">💬 WhatsApp</a>
+</div>
+<!-- MÓVIL: bottom nav tipo app -->
+<nav class="mob-bottom-nav">
+  <ul>
+    <li><a href="#inicio"><span class="nav-icon">🏠</span>Inicio</a></li>
+    <li><a href="#productos"><span class="nav-icon">🎱</span>Productos</a></li>
+    <li><a href="https://wa.me/56932312157" target="_blank"><span class="nav-icon">💬</span>WhatsApp</a></li>
+    <li><a href="#contacto"><span class="nav-icon">📍</span>Contacto</a></li>
+    <li><a href="#" onclick="openAdminModal();return false;"><span class="nav-icon">⚙️</span>Admin</a></li>
+  </ul>
+</nav>
 
 <!-- LOADING -->
 <div class="loading-overlay" id="loadingOverlay">
@@ -950,6 +1082,27 @@
 
   /* ── SMOOTH SCROLL ── */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',e=>{ const t=document.querySelector(a.getAttribute('href')); if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});} }); });
+
+  /* ── MÓVIL: hamburguesa ── */
+  function toggleMobMenu(){
+    document.getElementById('mobMenu').classList.toggle('open');
+    document.getElementById('mobHamburger').classList.toggle('open');
+  }
+  function closeMobMenu(){
+    document.getElementById('mobMenu').classList.remove('open');
+    document.getElementById('mobHamburger').classList.remove('open');
+  }
+
+  /* ── MÓVIL: bottom nav activa según sección ── */
+  window.addEventListener('scroll',()=>{
+    const secs=['inicio','productos','contacto'];
+    let current='inicio';
+    secs.forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-140) current=id; });
+    document.querySelectorAll('.mob-bottom-nav a').forEach(a=>{
+      a.classList.remove('active');
+      if(a.getAttribute('href')==='#'+current) a.classList.add('active');
+    });
+  });
 </script>
 </body>
 </html>
