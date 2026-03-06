@@ -99,392 +99,52 @@
     .btn-info:hover { border-color:var(--gold); color:var(--gold); }
     .empty-state { grid-column:1/-1; text-align:center; padding:5rem 2rem; color:rgba(245,240,232,0.2); }
     .empty-state span { display:block; font-size:4rem; margin-bottom:1rem; }
-    .mob-card-actions { display:none; }
-    /* Cabecera móvil oculta en desktop */
-    .mob-store-header { display:none; background:linear-gradient(135deg,#0d1f18,#152a1a); border-bottom:1px solid rgba(201,168,76,0.15); padding:1rem; text-align:center; }
-    .mob-store-header h2 { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:0.08em; color:var(--gold); line-height:1; margin-bottom:0.2rem; }
-    .mob-store-header p { font-size:0.68rem; color:rgba(245,240,232,0.35); }
-    .mob-store-header .mob-badges { display:flex; gap:0.5rem; justify-content:center; margin-top:0.6rem; flex-wrap:wrap; }
-    .mob-badge { font-size:0.58rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.22rem 0.65rem; border-radius:20px; background:rgba(46,107,71,0.3); color:#68d391; border:1px solid rgba(46,107,71,0.4); }
 
-    /* LOADING */
-    .loading-overlay { position:fixed; inset:0; background:var(--dark); z-index:1500; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem; transition:opacity 0.5s; }
-    .loading-overlay.hidden { opacity:0; pointer-events:none; }
-    .loading-overlay.gone { display:none; }
-    .loading-logo { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:0.1em; color:var(--gold); }
-    .loading-bar { width:200px; height:2px; background:rgba(201,168,76,0.2); border-radius:2px; overflow:hidden; }
-    .loading-bar-inner { height:100%; background:var(--gold); animation:loadbar 1.5s ease-in-out infinite; }
-    @keyframes loadbar { 0%{width:0;margin-left:0} 50%{width:60%;margin-left:20%} 100%{width:0;margin-left:100%} }
 
-    /* DETAIL MODAL */
-    .detail-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:600; align-items:center; justify-content:center; backdrop-filter:blur(8px); padding:1rem; }
-    .detail-overlay.active { display:flex; }
-    .detail-modal { background:#0f1a14; border:1px solid rgba(201,168,76,0.2); border-radius:6px; width:100%; max-width:900px; max-height:92vh; overflow-y:auto; position:relative; }
-    .detail-close { position:absolute; top:1rem; right:1.2rem; background:rgba(0,0,0,0.5); border:none; color:rgba(245,240,232,0.5); font-size:1.4rem; cursor:pointer; z-index:10; width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:all 0.3s; }
-    .detail-close:hover { color:var(--gold); }
-    .detail-gallery { position:relative; background:#0a150d; }
-    .gallery-main { width:100%; height:380px; display:flex; align-items:center; justify-content:center; font-size:6rem; background:#111e16; overflow:hidden; }
-    .gallery-main img { width:100%; height:100%; object-fit:contain; }
-    .gallery-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.6); border:1px solid rgba(201,168,76,0.25); color:var(--gold); width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.1rem; transition:all 0.3s; z-index:5; }
-    .gallery-arrow:hover { background:rgba(201,168,76,0.2); }
-    .gallery-arrow.prev { left:1rem; } .gallery-arrow.next { right:1rem; }
-    .gallery-dots { position:absolute; bottom:0.8rem; left:50%; transform:translateX(-50%); display:flex; gap:0.4rem; }
-    .gallery-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.25); cursor:pointer; transition:all 0.3s; border:none; }
-    .gallery-dot.active { background:var(--gold); transform:scale(1.2); }
-    .gallery-thumbs { display:flex; gap:0.5rem; padding:0.8rem 1.2rem; overflow-x:auto; background:#0a130c; }
-    .gallery-thumb { width:60px; height:60px; object-fit:cover; border-radius:3px; cursor:pointer; border:2px solid transparent; transition:all 0.3s; flex-shrink:0; background:#1a3a25; display:flex; align-items:center; justify-content:center; font-size:1.4rem; overflow:hidden; }
-    .gallery-thumb img { width:100%; height:100%; object-fit:cover; }
-    .gallery-thumb.active { border-color:var(--gold); }
-    .detail-body { padding:2rem 2.5rem; }
-    .detail-cat { font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem; }
-    .detail-name { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:0.04em; color:var(--ivory); line-height:1; margin-bottom:1rem; }
-    .detail-price-row { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap; }
-    .detail-price { font-family:'Bebas Neue',sans-serif; font-size:2.4rem; color:var(--gold); }
-    .detail-original { font-size:1.1rem; color:rgba(245,240,232,0.3); text-decoration:line-through; }
-    .detail-desc { font-size:0.9rem; color:rgba(245,240,232,0.65); line-height:1.8; margin-bottom:2rem; white-space:pre-line; }
-    .detail-actions { display:flex; gap:1rem; flex-wrap:wrap; }
-
-    /* CONTACT */
-    .contact-section { background:#0d1f18; }
-    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; margin-top:3rem; }
-    .contact-info { display:flex; flex-direction:column; gap:1.5rem; }
-    .contact-item { display:flex; align-items:flex-start; gap:1rem; }
-    .contact-icon { width:48px; height:48px; border-radius:50%; border:1px solid rgba(201,168,76,0.3); display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0; margin-top:0.1rem; }
-    .contact-label { font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,232,0.4); margin-bottom:0.2rem; }
-    .contact-value { font-size:1rem; color:var(--ivory); font-weight:500; }
-    .contact-value a { color:var(--gold); text-decoration:none; }
-    .contact-value small { font-size:0.78rem; color:rgba(245,240,232,0.4); display:block; margin-top:0.15rem; }
-    .badge-247 { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(46,107,71,0.4); border:1px solid rgba(46,107,71,0.6); color:#68d391; font-size:0.68rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; padding:0.3rem 0.8rem; border-radius:20px; }
-    .whatsapp-btn { display:inline-flex; align-items:center; gap:0.8rem; background:#25D366; color:#fff; padding:1rem 2rem; border-radius:3px; text-decoration:none; font-size:0.85rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; transition:all 0.3s; margin-top:0.5rem; }
-    .whatsapp-btn:hover { background:#1ebe5d; transform:translateY(-2px); }
-    .contact-card { background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.15); border-radius:4px; padding:2.5rem; }
-    .contact-card h3 { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:var(--ivory); margin-bottom:1.5rem; }
-    .info-row { display:flex; gap:0.8rem; align-items:flex-start; margin-bottom:1.2rem; }
-    .info-row span:first-child { font-size:1.2rem; flex-shrink:0; margin-top:0.05rem; }
-    .info-row p { font-size:0.85rem; color:rgba(245,240,232,0.6); line-height:1.5; }
-    .info-row strong { color:var(--ivory); display:block; margin-bottom:0.1rem; }
-
-    footer { background:#080f0a; padding:3rem 6rem 2rem; border-top:1px solid rgba(201,168,76,0.1); }
-    .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
-    .footer-brand { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:0.1em; color:var(--gold); margin-bottom:1rem; }
-    .footer-brand span { color:var(--ivory); }
-    .footer-desc { font-size:0.82rem; color:rgba(245,240,232,0.4); line-height:1.7; }
-    .footer-col h4 { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.15em; color:var(--ivory); margin-bottom:1.2rem; }
-    .footer-links { list-style:none; display:flex; flex-direction:column; gap:0.7rem; }
-    .footer-links a { text-decoration:none; font-size:0.82rem; color:rgba(245,240,232,0.4); transition:color 0.3s; }
-    .footer-links a:hover { color:var(--gold); }
-    .footer-bottom { border-top:1px solid rgba(255,255,255,0.06); padding-top:1.5rem; display:flex; justify-content:space-between; align-items:center; }
-    .footer-copy { font-size:0.75rem; color:rgba(245,240,232,0.25); }
-    .footer-admin-link { font-size:0.72rem; color:rgba(245,240,232,0.12); cursor:pointer; transition:color 0.3s; user-select:none; }
-    .footer-admin-link:hover { color:var(--gold); }
-
-    /* ADMIN MODAL */
-    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:500; align-items:center; justify-content:center; backdrop-filter:blur(6px); }
-    .modal-overlay.active { display:flex; }
-    .modal { background:#0f1a14; border:1px solid rgba(201,168,76,0.25); border-radius:6px; width:96%; max-width:1060px; max-height:92vh; overflow-y:auto; padding:2.5rem; position:relative; }
-    .modal-close { position:absolute; top:1.2rem; right:1.5rem; background:none; border:none; color:rgba(245,240,232,0.4); font-size:1.5rem; cursor:pointer; }
-    .modal-close:hover { color:var(--gold); }
-    .modal-title { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:0.08em; color:var(--gold); margin-bottom:2rem; }
-    .login-box { max-width:380px; margin:0 auto; text-align:center; padding:2rem 0; }
-    .login-box p { color:rgba(245,240,232,0.5); font-size:0.9rem; margin-bottom:2rem; }
-    .input-group { margin-bottom:1rem; }
-    .input-group input { width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(201,168,76,0.2); border-radius:3px; padding:0.85rem 1rem; color:var(--ivory); font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; transition:border-color 0.3s; }
-    .input-group input:focus { border-color:var(--gold); }
-    .login-error { color:#fc8181; font-size:0.8rem; margin-top:0.5rem; display:none; }
-    .admin-panel { display:none; }
-    .admin-panel.active { display:block; }
-    .admin-tabs { display:flex; margin-bottom:2rem; border-bottom:1px solid rgba(255,255,255,0.08); flex-wrap:wrap; }
-    .admin-tab { padding:0.7rem 1.2rem; font-size:0.73rem; font-weight:500; letter-spacing:0.09em; text-transform:uppercase; cursor:pointer; border:none; background:transparent; color:rgba(245,240,232,0.4); border-bottom:2px solid transparent; margin-bottom:-1px; transition:all 0.3s; white-space:nowrap; }
-    .admin-tab.active { color:var(--gold); border-bottom-color:var(--gold); }
-    .tab-content { display:none; }
-    .tab-content.active { display:block; }
-    .product-editor-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.4rem; }
-    .product-edit-card { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:4px; padding:1.4rem; }
-    .product-edit-card h4 { font-family:'Bebas Neue',sans-serif; font-size:1rem; color:var(--ivory); margin-bottom:1.1rem; }
-    .edit-field { margin-bottom:0.85rem; }
-    .edit-field label { display:block; font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,232,0.4); margin-bottom:0.3rem; }
-    .edit-field input, .edit-field textarea { width:100%; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:3px; padding:0.6rem 0.8rem; color:var(--ivory); font-family:'DM Sans',sans-serif; font-size:0.85rem; outline:none; transition:border-color 0.3s; resize:vertical; }
-    .edit-field input:focus, .edit-field textarea:focus { border-color:var(--gold); }
-    .multi-img-area { border:1px dashed rgba(201,168,76,0.3); border-radius:4px; padding:1rem; background:rgba(255,255,255,0.02); }
-    .multi-img-grid { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.7rem; min-height:20px; }
-    .thumb-wrap { position:relative; width:70px; height:70px; flex-shrink:0; }
-    .thumb-wrap img { width:100%; height:100%; object-fit:cover; border-radius:3px; border:1px solid rgba(255,255,255,0.1); }
-    .thumb-del { position:absolute; top:-6px; right:-6px; width:18px; height:18px; border-radius:50%; background:#e53e3e; color:#fff; border:none; font-size:0.65rem; cursor:pointer; display:flex; align-items:center; justify-content:center; }
-    .thumb-main-badge { position:absolute; bottom:2px; left:2px; background:var(--gold); color:var(--dark); font-size:0.48rem; font-weight:700; padding:1px 4px; border-radius:2px; text-transform:uppercase; }
-    .img-add-btn { width:70px; height:70px; border:1px dashed rgba(255,255,255,0.2); border-radius:3px; background:rgba(255,255,255,0.03); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.5rem; color:rgba(245,240,232,0.3); transition:all 0.3s; flex-shrink:0; }
-    .img-add-btn:hover { border-color:var(--gold); color:var(--gold); }
-    .img-upload-hint { font-size:0.68rem; color:rgba(245,240,232,0.25); margin-top:0.4rem; }
-    .toggle-row { display:flex; align-items:center; gap:0.7rem; }
-    .toggle-row input[type=checkbox] { width:15px; height:15px; accent-color:var(--gold); cursor:pointer; }
-    .toggle-row span { font-size:0.8rem; color:rgba(245,240,232,0.5); }
-    .sub-field { margin-top:0.5rem; display:none; }
-    .sub-field.active { display:block; }
-    .action-row { display:flex; gap:0.6rem; align-items:center; flex-wrap:wrap; margin-top:0.8rem; }
-    .save-btn { background:var(--gold); color:var(--dark); border:none; padding:0.55rem 1.1rem; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; border-radius:2px; cursor:pointer; transition:background 0.3s; }
-    .save-btn:hover { background:var(--gold-light); }
-    .del-btn { background:rgba(229,62,62,0.12); color:#fc8181; border:1px solid rgba(229,62,62,0.3); padding:0.55rem 1.1rem; font-size:0.7rem; font-weight:700; text-transform:uppercase; border-radius:2px; cursor:pointer; transition:all 0.3s; }
-    .del-btn:hover { background:rgba(229,62,62,0.28); }
-    .save-confirm { font-size:0.7rem; color:#68d391; margin-top:0.4rem; display:none; width:100%; }
-    .save-error { font-size:0.7rem; color:#fc8181; margin-top:0.4rem; display:none; width:100%; }
-
-    /* IMPORT */
-    .import-box { background:rgba(255,255,255,0.03); border:1px solid rgba(201,168,76,0.2); border-radius:4px; padding:2rem; max-width:600px; }
-    .import-box h3 { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; color:var(--gold); margin-bottom:0.4rem; }
-    .import-box > p { font-size:0.82rem; color:rgba(245,240,232,0.45); margin-bottom:1.5rem; line-height:1.6; }
-    .store-chips { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem; }
-    .store-chip { padding:0.4rem 1rem; font-size:0.7rem; font-weight:600; border-radius:20px; border:1px solid rgba(255,255,255,0.12); background:transparent; color:rgba(245,240,232,0.4); cursor:pointer; transition:all 0.25s; }
-    .store-chip.sel { color:#fff; border-color:transparent; }
-    .store-chip[data-store="aliexpress"].sel{background:#e8441a} .store-chip[data-store="mercadolibre"].sel{background:#ffe600;color:#333} .store-chip[data-store="amazon"].sel{background:#ff9900;color:#111} .store-chip[data-store="ebay"].sel{background:#0064d2} .store-chip[data-store="otro"].sel{background:var(--green)}
-    .fetch-btn { border:none; padding:0.7rem 1.6rem; font-size:0.76rem; font-weight:700; text-transform:uppercase; border-radius:3px; cursor:pointer; transition:all 0.3s; background:var(--gold); color:var(--dark); }
-    .fetch-btn:hover { background:var(--gold-light); }
-    .fetch-btn:disabled { opacity:0.5; cursor:not-allowed; }
-    .import-preview { margin-top:1.5rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:4px; padding:1.5rem; display:none; }
-    .import-preview.active { display:block; }
-    .prev-img-big { width:100%; max-height:160px; object-fit:contain; border-radius:3px; margin-bottom:0.8rem; background:#111; display:none; }
-    .import-error { color:#fc8181; font-size:0.8rem; margin-top:0.5rem; display:none; }
-    .import-info { font-size:0.73rem; color:rgba(245,240,232,0.28); margin-top:0.5rem; line-height:1.5; }
-    .loading-spinner { display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; animation:spin 0.7s linear infinite; vertical-align:middle; margin-right:0.3rem; }
-    @keyframes spin { to{transform:rotate(360deg)} }
-
-    /* URLS */
-    .urls-box { max-width:680px; }
-    .urls-box h3 { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; color:var(--gold); margin-bottom:0.4rem; }
-    .urls-box > p { font-size:0.82rem; color:rgba(245,240,232,0.4); margin-bottom:1.5rem; line-height:1.6; }
-    .url-add-row { display:flex; gap:0.8rem; flex-wrap:wrap; margin-bottom:1.5rem; }
-    .url-add-row input { flex:1; min-width:150px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:3px; padding:0.65rem 0.9rem; color:var(--ivory); font-family:'DM Sans',sans-serif; font-size:0.85rem; outline:none; }
-    .url-list { display:flex; flex-direction:column; gap:0.7rem; }
-    .url-item { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:3px; padding:1rem 1.2rem; display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
-    .url-item-label { font-size:0.68rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.2rem; }
-    .url-item-link { font-size:0.82rem; color:rgba(245,240,232,0.6); word-break:break-all; flex:1; }
-    .url-item-link a { color:#68b5fc; text-decoration:none; }
-    .url-item-note { font-size:0.78rem; color:rgba(245,240,232,0.35); font-style:italic; }
-    .url-del-btn { background:rgba(229,62,62,0.1); color:#fc8181; border:1px solid rgba(229,62,62,0.25); padding:0.4rem 0.8rem; font-size:0.68rem; font-weight:700; text-transform:uppercase; border-radius:2px; cursor:pointer; }
-    .url-open-btn { background:rgba(104,181,252,0.1); color:#68b5fc; border:1px solid rgba(104,181,252,0.25); padding:0.4rem 0.8rem; font-size:0.68rem; font-weight:700; text-transform:uppercase; border-radius:2px; cursor:pointer; text-decoration:none; display:inline-block; }
-    .url-empty { font-size:0.85rem; color:rgba(245,240,232,0.2); text-align:center; padding:2rem; }
-
-    /* Firebase status indicator */
-    .fb-status { position:fixed; bottom:1rem; right:1rem; font-size:0.7rem; padding:0.4rem 0.8rem; border-radius:20px; z-index:999; transition:all 0.5s; opacity:0; }
-    .fb-status.show { opacity:1; }
-    .fb-status.ok { background:rgba(46,107,71,0.8); color:#68d391; border:1px solid rgba(104,211,145,0.3); }
-    .fb-status.err { background:rgba(229,62,62,0.2); color:#fc8181; border:1px solid rgba(229,62,62,0.3); }
-    .fb-status.saving { background:rgba(201,168,76,0.15); color:var(--gold); border:1px solid rgba(201,168,76,0.3); }
-
-    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-    .hero-eyebrow{animation:fadeUp 0.7s ease both} h1{animation:fadeUp 0.7s ease 0.15s both} .hero-desc{animation:fadeUp 0.7s ease 0.3s both} .hero-btns{animation:fadeUp 0.7s ease 0.45s both}
-    .table-visual{animation:fadeUp 0.9s ease 0.3s both,float 6s ease-in-out 1.2s infinite}
-
-    /* ══════════════════════════════════
-       PANTALLA DE BIENVENIDA
-    ══════════════════════════════════ */
-    .welcome-screen {
-      position:fixed; inset:0; z-index:3000;
-      background:var(--dark);
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      padding:2rem; gap:0;
-      transition:opacity 0.5s ease, transform 0.5s ease;
-    }
-    .welcome-screen.hide { opacity:0; transform:scale(1.05); pointer-events:none; }
-    .welcome-screen.gone { display:none; }
-    .welcome-balls { display:flex; gap:0.7rem; margin-bottom:2rem; }
-    .wb { width:16px; height:16px; border-radius:50%; box-shadow:inset -2px -2px 4px rgba(0,0,0,0.4); animation:wbounce 1.3s ease-in-out infinite; }
-    .wb:nth-child(1){background:radial-gradient(circle at 35% 30%,#ffe566,#f5c800);animation-delay:0s}
-    .wb:nth-child(2){background:radial-gradient(circle at 35% 30%,#ff8866,#cc3311);animation-delay:0.13s}
-    .wb:nth-child(3){background:radial-gradient(circle at 35% 30%,#fff,#ddd);animation-delay:0.26s}
-    .wb:nth-child(4){background:radial-gradient(circle at 35% 30%,#66aaff,#1155cc);animation-delay:0.39s}
-    .wb:nth-child(5){background:radial-gradient(circle at 35% 30%,#88ee88,#228822);animation-delay:0.52s}
-    @keyframes wbounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-    .welcome-brand { font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,8vw,3.5rem); letter-spacing:0.08em; color:var(--ivory); text-align:center; line-height:1; margin-bottom:0.4rem; }
-    .welcome-brand span { color:var(--gold); }
-    .welcome-addr { font-size:0.75rem; color:rgba(245,240,232,0.3); text-align:center; letter-spacing:0.1em; margin-bottom:2.5rem; }
-    .welcome-line { width:40px; height:1px; background:rgba(201,168,76,0.3); margin:0 auto 2rem; }
-    .welcome-q { font-size:0.8rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(245,240,232,0.4); text-align:center; margin-bottom:1.4rem; }
-    .welcome-btns { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; width:100%; max-width:420px; margin-bottom:2rem; }
-    .welcome-btn {
-      flex:1; min-width:150px; padding:1.5rem 1rem;
-      border-radius:10px; border:1px solid rgba(201,168,76,0.2);
-      background:rgba(255,255,255,0.03); cursor:pointer;
-      display:flex; flex-direction:column; align-items:center; gap:0.5rem;
-      transition:all 0.25s; position:relative; overflow:hidden;
-    }
-    .welcome-btn::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%,rgba(201,168,76,0.08),transparent 70%); opacity:0; transition:opacity 0.3s; }
-    .welcome-btn:hover::before, .welcome-btn:active::before { opacity:1; }
-    .welcome-btn:hover { border-color:rgba(201,168,76,0.5); transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.4); }
-    .welcome-btn:active { transform:scale(0.97); }
-    .welcome-btn-icon { font-size:2.4rem; line-height:1; }
-    .welcome-btn-label { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:0.08em; color:var(--ivory); }
-    .welcome-btn-sub { font-size:0.65rem; color:rgba(245,240,232,0.35); letter-spacing:0.04em; text-align:center; line-height:1.4; }
-    .welcome-skip { background:none; border:none; color:rgba(245,240,232,0.18); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; transition:color 0.3s; }
-    .welcome-skip:hover { color:rgba(245,240,232,0.4); }
-
-    /* ══════════════════════════════════
-       MÓVIL — nav y estructura
-    ══════════════════════════════════ */
-    .mob-nav { display:none; position:fixed; top:0; left:0; right:0; z-index:200; background:rgba(10,20,13,0.98); backdrop-filter:blur(20px); border-bottom:1px solid rgba(201,168,76,0.2); padding:0 1rem; height:58px; align-items:center; justify-content:space-between; }
-    .mob-nav-logo { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; letter-spacing:0.08em; color:var(--gold); }
-    .mob-nav-logo span { color:var(--ivory); }
-    .mob-hamburger { width:38px; height:38px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; cursor:pointer; border:none; background:transparent; padding:0; }
-    .mob-hamburger span { display:block; width:20px; height:2px; background:var(--ivory); border-radius:2px; transition:all 0.3s; }
-    .mob-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-    .mob-hamburger.open span:nth-child(2){opacity:0}
-    .mob-hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-    .mob-menu { display:none; position:fixed; top:58px; left:0; right:0; z-index:199; background:#0a140d; border-bottom:1px solid rgba(201,168,76,0.15); padding:1.2rem 1.5rem; flex-direction:column; }
-    .mob-menu.open { display:flex; }
-    .mob-menu a { text-decoration:none; font-size:0.85rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,240,232,0.65); padding:0.9rem 0; border-bottom:1px solid rgba(255,255,255,0.05); transition:color 0.3s; display:block; }
-    .mob-menu a:last-child { border-bottom:none; color:var(--gold); font-weight:700; }
-
-    /* Bottom nav tipo app */
-    .mob-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:200; background:rgba(7,13,9,0.97); backdrop-filter:blur(20px); border-top:1px solid rgba(201,168,76,0.12); padding:0.4rem 0 calc(0.4rem + env(safe-area-inset-bottom)); }
-    .mob-bottom-nav ul { display:flex; list-style:none; justify-content:space-around; }
-    .mob-bottom-nav li a { display:flex; flex-direction:column; align-items:center; gap:2px; text-decoration:none; color:rgba(245,240,232,0.28); font-size:0.5rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.4rem 0.8rem; transition:all 0.25s; }
-    .mob-bottom-nav li a .nav-icon { font-size:1.25rem; line-height:1; }
-    .mob-bottom-nav li a.active { color:var(--gold); }
-    /* Botón WhatsApp central destacado */
-    .mob-bottom-nav .wa-center a { background:rgba(37,211,102,0.12); border-radius:12px; color:#25D366 !important; padding:0.3rem 1rem; border:1px solid rgba(37,211,102,0.25); }
-    .mob-bottom-nav .wa-center a .nav-icon { font-size:1.4rem; }
-
-    /* Botón flotante WhatsApp */
-    .mob-float-wa { display:none; position:fixed; bottom:72px; right:1rem; z-index:150; width:52px; height:52px; border-radius:50%; background:#25D366; color:#fff; font-size:1.5rem; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.45); text-decoration:none; animation:wapulse 3s ease-in-out infinite; }
-    @keyframes wapulse{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,0.45)}60%{box-shadow:0 4px 28px rgba(37,211,102,0.7),0 0 0 8px rgba(37,211,102,0.08)}}
-
-    /* ══════════════════════════════════
-       MÓVIL — cards de producto mejoradas
-    ══════════════════════════════════ */
-    /* Barra compra fija en modal detalle */
-    .detail-buy-bar { display:none; position:sticky; bottom:0; left:0; right:0; background:#0d1a10; border-top:1px solid rgba(201,168,76,0.15); padding:0.9rem 1.2rem calc(0.9rem + env(safe-area-inset-bottom)); gap:0.7rem; z-index:10; flex-shrink:0; }
-    .detail-buy-bar .buy-main { flex:1; background:var(--gold); color:var(--dark); border:none; border-radius:8px; padding:1rem; font-family:'Bebas Neue',sans-serif; font-size:1.2rem; letter-spacing:0.1em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:0.5rem; transition:all 0.2s; }
-    .detail-buy-bar .buy-main:active { transform:scale(0.97); background:var(--gold-light); }
-    .detail-buy-bar .buy-call { width:52px; height:52px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:8px; color:var(--ivory); font-size:1.3rem; cursor:pointer; display:flex; align-items:center; justify-content:center; text-decoration:none; flex-shrink:0; transition:all 0.2s; }
-    .detail-buy-bar .buy-call:active { background:rgba(255,255,255,0.12); }
-
-    @media (max-width: 768px) {
-      /* Ocultar todo excepto catálogo y contacto */
-      nav, .hero, .stats-bar, footer, .welcome-screen { display:none !important; }
-      .mob-nav { display:flex; }
-      .mob-bottom-nav { display:block; }
-      .mob-float-wa { display:flex; }
-
-      body { padding-top:58px; padding-bottom:62px; }
-
-      /* Mini cabecera de tienda */
-      .mob-store-header { display:block !important; }
-
-      section { padding:1rem 0.85rem; }
-      #contacto { padding-bottom:1.5rem; }
-      .section-label { font-size:0.6rem; }
-      .section-title { font-size:1.5rem; }
-
-      /* Catálogo */
-      .products-header { flex-direction:column; align-items:flex-start; gap:0.5rem; margin-bottom:0.8rem; }
-      .products-header .btn-outline { display:none; }
-      .filter-bar { flex-wrap:nowrap; overflow-x:auto; padding-bottom:0.3rem; -webkit-overflow-scrolling:touch; gap:0.4rem; margin-bottom:0.8rem; }
-      .filter-bar::-webkit-scrollbar { display:none; }
-      .filter-btn { flex-shrink:0; font-size:0.6rem; padding:0.38rem 0.8rem; border-radius:20px; }
-      .products-grid { grid-template-columns:repeat(2,1fr); gap:0.6rem; }
-      .product-card.featured { grid-row:span 1; }
-      .product-card.featured .card-img { aspect-ratio:1/1; height:auto; }
-      .card-img { aspect-ratio:1/1; font-size:2.4rem; }
-      .card-body { padding:0.6rem; display:flex; flex-direction:column; gap:0.2rem; }
-      .card-category { font-size:0.55rem; }
-      .card-name { font-size:0.88rem; line-height:1.2; }
-      .card-desc { display:none; }
-      .card-footer { flex-direction:column; gap:0.38rem; align-items:stretch; }
-      .card-price { font-size:1.15rem; }
-      .card-price .original { font-size:0.68rem; }
-      .card-price span.unit { font-size:0.55rem; }
-      .btn-add, .btn-info { display:none !important; }
-      .card-footer > div:not(.mob-card-actions) { display:none !important; }
-      .mob-card-actions { display:flex !important; gap:0.3rem; }
-      .mob-btn-buy { display:flex !important; flex:1; background:var(--gold); color:var(--dark); border:none; border-radius:5px; padding:0.5rem 0.3rem; font-family:'Bebas Neue',sans-serif; font-size:0.8rem; letter-spacing:0.05em; cursor:pointer; align-items:center; justify-content:center; gap:0.2rem; transition:all 0.15s; white-space:nowrap; }
-      .mob-btn-buy:active { transform:scale(0.96); background:var(--gold-light); }
-      .mob-btn-detail { display:flex !important; width:30px; flex-shrink:0; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:5px; color:rgba(245,240,232,0.4); font-size:0.75rem; cursor:pointer; align-items:center; justify-content:center; transition:all 0.15s; }
-      .mob-btn-detail:active { border-color:var(--gold); color:var(--gold); }
-      .agotado .mob-btn-buy { background:rgba(80,80,80,0.3) !important; color:rgba(255,255,255,0.2) !important; cursor:not-allowed; }
-
-      /* Contacto */
-      .contact-section { background:#0a150d; }
-      .contact-grid { grid-template-columns:1fr; gap:1rem; }
-      .contact-info { gap:1rem; }
-      .contact-icon { width:38px; height:38px; font-size:0.95rem; }
-      .contact-value { font-size:0.88rem; }
-      .contact-card { padding:1.2rem; }
-      .whatsapp-btn { width:100%; justify-content:center; font-size:0.9rem; padding:0.95rem; border-radius:8px; }
-
-      /* Modal detalle */
-      .detail-overlay { padding:0; align-items:flex-end; background:rgba(0,0,0,0.88); }
-      .detail-modal { border-radius:16px 16px 0 0; max-height:91vh; border-bottom:none; display:flex; flex-direction:column; overflow:hidden; }
-      .gallery-main { height:200px; flex-shrink:0; }
-      .gallery-thumbs { flex-shrink:0; }
-      .detail-body { padding:1rem; flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-      .detail-name { font-size:1.35rem; }
-      .detail-price { font-size:1.65rem; }
-      .detail-desc { font-size:0.8rem; }
-      .detail-actions { display:none !important; }
-      .detail-buy-bar { display:flex; }
-
-      /* Admin */
-      .modal { padding:1rem; border-radius:14px 14px 0 0; max-height:96vh; }
-      .modal-overlay { align-items:flex-end; padding:0; }
-      .admin-tab { font-size:0.56rem; padding:0.5rem 0.55rem; }
-      .product-editor-grid { grid-template-columns:1fr; }
-    }
-
-    @media (max-width: 390px) {
-      .card-name { font-size:0.8rem; }
-      .mob-btn-buy { font-size:0.72rem; }
-    }
+    /* ── AVISO MODO ESCRITORIO ── */
+    .desktop-prompt { display:none; position:fixed; inset:0; z-index:9999; background:var(--dark); flex-direction:column; align-items:center; justify-content:center; padding:2rem; text-align:center; gap:1.2rem; }
+    .desktop-prompt.show { display:flex; }
+    .desktop-prompt-logo { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; letter-spacing:0.08em; color:var(--gold); }
+    .desktop-prompt-logo span { color:var(--ivory); }
+    .desktop-prompt h2 { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:0.06em; color:var(--ivory); line-height:1.1; }
+    .desktop-prompt p { font-size:0.82rem; color:rgba(245,240,232,0.45); line-height:1.7; max-width:300px; }
+    .desktop-prompt-steps { background:rgba(255,255,255,0.04); border:1px solid rgba(201,168,76,0.15); border-radius:10px; padding:1.2rem 1.5rem; max-width:320px; width:100%; text-align:left; }
+    .desktop-prompt-steps p { font-size:0.78rem; color:rgba(245,240,232,0.5); margin-bottom:0.5rem; }
+    .desktop-prompt-step { display:flex; align-items:flex-start; gap:0.8rem; margin-bottom:0.8rem; }
+    .desktop-prompt-step:last-child { margin-bottom:0; }
+    .step-num { width:22px; height:22px; border-radius:50%; background:var(--gold); color:var(--dark); font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.05rem; }
+    .step-text { font-size:0.78rem; color:rgba(245,240,232,0.65); line-height:1.5; }
+    .step-text strong { color:var(--ivory); display:block; }
+    .desktop-prompt-skip { background:none; border:1px solid rgba(255,255,255,0.12); color:rgba(245,240,232,0.35); font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; padding:0.6rem 1.4rem; border-radius:4px; cursor:pointer; transition:all 0.3s; margin-top:0.5rem; }
+    .desktop-prompt-skip:hover { border-color:rgba(245,240,232,0.3); color:rgba(245,240,232,0.6); }
   </style>
 </head>
 <body>
 
-<!-- ══ PANTALLA DE BIENVENIDA ══ -->
-<div class="welcome-screen" id="welcomeScreen">
-  <div class="welcome-balls">
-    <div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div><div class="wb"></div>
+<!-- ── AVISO MODO ESCRITORIO (solo móvil) ── -->
+<div class="desktop-prompt" id="desktopPrompt">
+  <div class="desktop-prompt-logo">SALON DE POOL<span> DEA2X</span></div>
+  <h2>📱 Activa el Modo<br>Escritorio</h2>
+  <p>Para ver la tienda completa con todos los productos y precios, activa el modo escritorio en tu navegador.</p>
+  <div class="desktop-prompt-steps">
+    <p>¿Cómo activarlo?</p>
+    <div class="desktop-prompt-step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Chrome (Android)</strong>Toca los 3 puntos ··· arriba a la derecha</div>
+    </div>
+    <div class="desktop-prompt-step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Marca "Sitio de escritorio"</strong>La página se recargará en versión completa</div>
+    </div>
+    <div class="desktop-prompt-step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Safari (iPhone)</strong>Toca "aA" en la barra de dirección → "Solicitar sitio de escritorio"</div>
+    </div>
   </div>
-  <div class="welcome-brand">SALON DE POOL<br><span>DEA2X</span></div>
-  <div class="welcome-addr">Av. Las Parcelas 4010, Hospicio</div>
-  <div class="welcome-line"></div>
-  <div class="welcome-q">¿Cómo estás visitando la tienda?</div>
-  <div class="welcome-btns">
-    <button class="welcome-btn" onclick="enterAs('pc')">
-      <span class="welcome-btn-icon">🖥️</span>
-      <span class="welcome-btn-label">Computador</span>
-      <span class="welcome-btn-sub">Vista completa con todos los detalles</span>
-    </button>
-    <button class="welcome-btn" onclick="enterAs('mob')">
-      <span class="welcome-btn-icon">📱</span>
-      <span class="welcome-btn-label">Celular</span>
-      <span class="welcome-btn-sub">Rápido y fácil de comprar</span>
-    </button>
-  </div>
-  <button class="welcome-skip" onclick="enterAs('auto')">detectar automáticamente</button>
+  <button class="desktop-prompt-skip" onclick="skipDesktopPrompt()">Continuar de todas formas</button>
 </div>
 
-<!-- MÓVIL: top nav -->
-<div class="mob-nav">
-  <div class="mob-nav-logo">DEA2X<span> POOL</span></div>
-  <button class="mob-hamburger" id="mobHamburger" onclick="toggleMobMenu()">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-<!-- MÓVIL: menú desplegable -->
-<div class="mob-menu" id="mobMenu">
-  <a href="#productos" onclick="closeMobMenu()">🎱 Productos</a>
-  <a href="#contacto" onclick="closeMobMenu()">📍 Contacto</a>
-  <a href="https://wa.me/56932312157?text=Hola,%20me%20interesa%20un%20producto" target="_blank">💬 WhatsApp</a>
-</div>
-<!-- MÓVIL: bottom nav tipo app -->
-<nav class="mob-bottom-nav">
-  <ul>
-    <li><a href="#inicio" id="bnInicio"><span class="nav-icon">🏠</span>Inicio</a></li>
-    <li><a href="#productos" id="bnProductos"><span class="nav-icon">🎱</span>Ver</a></li>
-    <li class="wa-center"><a href="https://wa.me/56932312157?text=Hola,%20quiero%20comprar" target="_blank"><span class="nav-icon">💬</span>Comprar</a></li>
-    <li><a href="#contacto" id="bnContacto"><span class="nav-icon">📍</span>Contacto</a></li>
-    <li><a href="#" onclick="openAdminModal();return false;"><span class="nav-icon">⚙️</span>Admin</a></li>
-  </ul>
-</nav>
-<!-- MÓVIL: WhatsApp flotante -->
-<a class="mob-float-wa" href="https://wa.me/56932312157?text=Hola,%20quiero%20comprar%20algo" target="_blank">💬</a>
+
 
 <!-- LOADING -->
 <div class="loading-overlay" id="loadingOverlay">
@@ -535,16 +195,6 @@
   <div class="stat"><div class="stat-num" style="font-size:1.1rem">📞 +56 9 3231 2157</div><div class="stat-label">WhatsApp directo</div></div>
   <div class="stat-divider"></div>
   <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Atención al cliente</div></div>
-</div>
-
-<!-- MÓVIL: cabecera simple de tienda -->
-<div class="mob-store-header">
-  <h2>🎱 DEA2X POOL</h2>
-  <p>Av. Las Parcelas 4010, Hospicio · +56 9 3231 2157</p>
-  <div class="mob-badges">
-    <span class="mob-badge">🚚 Delivery Iquique & Hospicio</span>
-    <span class="mob-badge">⏰ 24/7</span>
-  </div>
 </div>
 
 <section class="products-section" id="productos">
@@ -1206,25 +856,6 @@
   /* ── SMOOTH SCROLL ── */
   document.querySelectorAll('a[href^="#"]').forEach(a=>{ a.addEventListener('click',e=>{ const t=document.querySelector(a.getAttribute('href')); if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});} }); });
 
-  /* ══ PANTALLA DE BIENVENIDA ══ */
-  function enterAs(mode){
-    if(mode==='auto') mode=window.innerWidth<=768?'mob':'pc';
-    try{ localStorage.setItem('dea2x_mode',mode); }catch(e){}
-    const ws=document.getElementById('welcomeScreen');
-    if(ws){ ws.classList.add('hide'); setTimeout(()=>ws.classList.add('gone'),520); }
-  }
-  // Al cargar: si ya eligió antes, saltar bienvenida
-  (function(){
-    let saved=null;
-    try{ saved=localStorage.getItem('dea2x_mode'); }catch(e){}
-    // En móvil real (<480px) saltar la pantalla de bienvenida automáticamente
-    const isMobile = window.innerWidth <= 480 || /Android|iPhone|iPad/i.test(navigator.userAgent);
-    if(saved || isMobile){
-      const ws=document.getElementById('welcomeScreen');
-      if(ws) ws.classList.add('gone');
-    }
-  })();
-
   /* ── MÓVIL: hamburguesa ── */
   function toggleMobMenu(){
     document.getElementById('mobMenu').classList.toggle('open');
@@ -1235,16 +866,18 @@
     document.getElementById('mobHamburger').classList.remove('open');
   }
 
-  /* ── MÓVIL: bottom nav activa según sección ── */
-  window.addEventListener('scroll',()=>{
-    const secs=['inicio','productos','contacto'];
-    let current='inicio';
-    secs.forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-140) current=id; });
-    document.querySelectorAll('.mob-bottom-nav a').forEach(a=>{
-      a.classList.remove('active');
-      if(a.getAttribute('href')==='#'+current) a.classList.add('active');
-    });
-  });
+  /* ── DETECCIÓN MÓVIL ── */
+  (function(){
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) && !window.navigator.standalone;
+    const skipped = (()=>{ try{ return localStorage.getItem('dea2x_desktop_skip'); }catch(e){ return null; } })();
+    if(isMobile && !skipped){
+      document.getElementById('desktopPrompt').classList.add('show');
+    }
+  })();
+  function skipDesktopPrompt(){
+    try{ localStorage.setItem('dea2x_desktop_skip','1'); }catch(e){}
+    document.getElementById('desktopPrompt').classList.remove('show');
+  }
 </script>
 </body>
 </html>
